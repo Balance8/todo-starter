@@ -14,7 +14,8 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": ["build", "lint", "test", "e2e", "generate-gql"],
+        "strictlyOrderedTargets": ["generate-gql"]
       }
     }
   },
@@ -30,7 +31,14 @@
     "api": {
       "tags": []
     },
-    "api-interfaces": {
+    "data-access": {
+      "tags": [],
+      "implicitDependencies": ["api"]
+    },
+    "feature-todos": {
+      "tags": []
+    },
+    "prisma-client": {
       "tags": []
     },
     "web-app": {
