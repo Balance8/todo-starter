@@ -1,6 +1,6 @@
 import { ApolloServer } from 'apollo-server-express';
 import { Context } from './context';
-import { prisma } from './prisma';
+import prisma from './prisma';
 import { schema } from './schema';
 
 export const server = new ApolloServer({
@@ -8,6 +8,7 @@ export const server = new ApolloServer({
   context: (): Context => {
     return {
       prisma,
+      select: {},
     };
   },
 });

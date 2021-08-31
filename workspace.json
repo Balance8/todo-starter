@@ -59,7 +59,7 @@
         "generate-gql": {
           "executor": "@nrwl/workspace:run-commands",
           "options": {
-            "command": "yarn ts-node --project ./tsconfig.base.json --compiler-options '{\"module\":\"CommonJS\"}' --transpile-only apps/api/src/graphql/schema",
+            "command": "yarn ts-node -r tsconfig-paths/register --project ./tsconfig.base.json --compiler-options '{\"module\":\"CommonJS\"}' --transpile-only apps/api/src/graphql/schema",
             "outputPath": "apps/api/src/generated"
           }
         }

@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 
-import {
-  TodoItemsDocument,
-  TodoItemsQuery,
-  useCreateOneTodoItemMutation,
-} from '@todo-starter/data-access';
+import { useCreateOneTodoItemMutation } from '@todo-starter/data-access';
 import './todo-item-form.module.scss';
 
 /* eslint-disable-next-line */
@@ -13,34 +9,41 @@ export interface TodoItemFormProps {}
 export function TodoItemForm(props: TodoItemFormProps) {
   const [done, setDone] = useState(false);
   const [text, setText] = useState('');
-
-  const [createOneTodoItemMutation, mutationResult] =
+  const [createOneTodoItemMutation, { data, loading, error }] =
     useCreateOneTodoItemMutation({
       variables: {
-        text,
+        text, // value for 'text'
         done,
       },
-      update(cache, { data }) {
-        if (!data) {
-          return;
-        }
-        const { createOneTodoItem } = data;
-        const todoItemsQuery = cache.readQuery<TodoItemsQuery>({
-          query: TodoItemsDocument,
-        });
-        if (!todoItemsQuery) {
-          return;
-        }
-        const { todoItems } = todoItemsQuery;
-
-        cache.writeQuery({
-          query: TodoItemsDocument,
-          data: {
-            todoItems: todoItems.concat([createOneTodoItem]),
-          },
-        });
-      },
     });
+
+  // const [createOneTodoItemMutation, mutationResult] =
+  //   useCreateOneTodoItemMutation({
+  //     variables: {
+  //       text,
+  //       done,
+  //     },
+  //     update(cache, { data }) {
+  //       if (!data) {
+  //         return;
+  //       }
+  //       const { createOneTodoItem } = data;
+  //       const todoItemsQuery = cache.readQuery<TodoItemsQuery>({
+  //         query: TodoItemsDocument,
+  //       });
+  //       if (!todoItemsQuery) {
+  //         return;
+  //       }
+  //       const { todoItems } = todoItemsQuery;
+
+  //       cache.writeQuery({
+  //         query: TodoItemsDocument,
+  //         data: {
+  //           todoItems: todoItems.concat([createOneTodoItem]),
+  //         },
+  //       });
+  //     },
+  //   });
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

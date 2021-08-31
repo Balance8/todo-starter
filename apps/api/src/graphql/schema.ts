@@ -1,17 +1,17 @@
 import { makeSchema } from 'nexus';
-import { nexusPrisma } from 'nexus-plugin-prisma';
+import { paljs } from '@paljs/nexus';
+import * as types from '../generated/nexus';
 import * as path from 'path';
-import { todoItemTypes } from './todo-item';
-
-const PRISMA_PATH = path.resolve('libs/prisma-client/src');
+import { Prisma } from '@todo-starter/prisma-client';
 
 export const schema = makeSchema({
   plugins: [
-    nexusPrisma({
-      experimentalCRUD: true,
-      inputs: {
-        prismaClient: PRISMA_PATH,
+    paljs({
+      prismaSelectOptions: {
+        dmmf: [Prisma.dmmf],
       },
+      includeAdmin: false,
+      dmmf: [Prisma.dmmf],
     }),
   ],
   outputs: {
@@ -22,5 +22,5 @@ export const schema = makeSchema({
     module: path.join(process.cwd(), 'apps/api/src/graphql/context.ts'),
     export: 'Context',
   },
-  types: [todoItemTypes],
+  types,
 });

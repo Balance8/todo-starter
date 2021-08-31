@@ -5,23 +5,362 @@
 
 
 import type { Context } from "./../../../apps/api/src/graphql/context"
-
-
+import type { core } from "nexus"
 declare global {
-  interface NexusGenCustomOutputProperties<TypeName extends string> {
-    crud: NexusPrisma<TypeName, 'crud'>
-    model: NexusPrisma<TypeName, 'model'>
+  interface NexusGenCustomInputMethods<TypeName extends string> {
+    /**
+     * Json custom scalar type
+     */
+    json<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "Json";
+    /**
+     * Decimal custom scalar type
+     */
+    decimal<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "Decimal";
+    /**
+     * BigInt custom scalar type
+     */
+    bigint<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "BigInt";
+    /**
+     * Date custom scalar type
+     */
+    date<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "DateTime";
   }
 }
+declare global {
+  interface NexusGenCustomOutputMethods<TypeName extends string> {
+    /**
+     * Json custom scalar type
+     */
+    json<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "Json";
+    /**
+     * Decimal custom scalar type
+     */
+    decimal<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "Decimal";
+    /**
+     * BigInt custom scalar type
+     */
+    bigint<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "BigInt";
+    /**
+     * Date custom scalar type
+     */
+    date<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "DateTime";
+  }
+}
+
 
 declare global {
   interface NexusGen extends NexusGenTypes {}
 }
 
 export interface NexusGenInputs {
+  BoolFieldUpdateOperationsInput: { // input type
+    set?: boolean | null; // Boolean
+  }
+  BoolFilter: { // input type
+    equals?: boolean | null; // Boolean
+    not?: NexusGenInputs['NestedBoolFilter'] | null; // NestedBoolFilter
+  }
+  BoolWithAggregatesFilter: { // input type
+    _count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _max?: NexusGenInputs['NestedBoolFilter'] | null; // NestedBoolFilter
+    _min?: NexusGenInputs['NestedBoolFilter'] | null; // NestedBoolFilter
+    count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    equals?: boolean | null; // Boolean
+    max?: NexusGenInputs['NestedBoolFilter'] | null; // NestedBoolFilter
+    min?: NexusGenInputs['NestedBoolFilter'] | null; // NestedBoolFilter
+    not?: NexusGenInputs['NestedBoolWithAggregatesFilter'] | null; // NestedBoolWithAggregatesFilter
+  }
+  IntFieldUpdateOperationsInput: { // input type
+    decrement?: number | null; // Int
+    divide?: number | null; // Int
+    increment?: number | null; // Int
+    multiply?: number | null; // Int
+    set?: number | null; // Int
+  }
+  IntFilter: { // input type
+    equals?: number | null; // Int
+    gt?: number | null; // Int
+    gte?: number | null; // Int
+    in?: Array<number | null> | null; // [Int]
+    lt?: number | null; // Int
+    lte?: number | null; // Int
+    not?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    notIn?: Array<number | null> | null; // [Int]
+  }
+  IntWithAggregatesFilter: { // input type
+    _avg?: NexusGenInputs['NestedFloatFilter'] | null; // NestedFloatFilter
+    _count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _max?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _min?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _sum?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    avg?: NexusGenInputs['NestedFloatFilter'] | null; // NestedFloatFilter
+    count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    equals?: number | null; // Int
+    gt?: number | null; // Int
+    gte?: number | null; // Int
+    in?: Array<number | null> | null; // [Int]
+    lt?: number | null; // Int
+    lte?: number | null; // Int
+    max?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    min?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    not?: NexusGenInputs['NestedIntWithAggregatesFilter'] | null; // NestedIntWithAggregatesFilter
+    notIn?: Array<number | null> | null; // [Int]
+    sum?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+  }
+  NestedBoolFilter: { // input type
+    equals?: boolean | null; // Boolean
+    not?: NexusGenInputs['NestedBoolFilter'] | null; // NestedBoolFilter
+  }
+  NestedBoolWithAggregatesFilter: { // input type
+    _count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _max?: NexusGenInputs['NestedBoolFilter'] | null; // NestedBoolFilter
+    _min?: NexusGenInputs['NestedBoolFilter'] | null; // NestedBoolFilter
+    count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    equals?: boolean | null; // Boolean
+    max?: NexusGenInputs['NestedBoolFilter'] | null; // NestedBoolFilter
+    min?: NexusGenInputs['NestedBoolFilter'] | null; // NestedBoolFilter
+    not?: NexusGenInputs['NestedBoolWithAggregatesFilter'] | null; // NestedBoolWithAggregatesFilter
+  }
+  NestedFloatFilter: { // input type
+    equals?: number | null; // Float
+    gt?: number | null; // Float
+    gte?: number | null; // Float
+    in?: Array<number | null> | null; // [Float]
+    lt?: number | null; // Float
+    lte?: number | null; // Float
+    not?: NexusGenInputs['NestedFloatFilter'] | null; // NestedFloatFilter
+    notIn?: Array<number | null> | null; // [Float]
+  }
+  NestedIntFilter: { // input type
+    equals?: number | null; // Int
+    gt?: number | null; // Int
+    gte?: number | null; // Int
+    in?: Array<number | null> | null; // [Int]
+    lt?: number | null; // Int
+    lte?: number | null; // Int
+    not?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    notIn?: Array<number | null> | null; // [Int]
+  }
+  NestedIntNullableFilter: { // input type
+    equals?: number | null; // Int
+    gt?: number | null; // Int
+    gte?: number | null; // Int
+    in?: Array<number | null> | null; // [Int]
+    lt?: number | null; // Int
+    lte?: number | null; // Int
+    not?: NexusGenInputs['NestedIntNullableFilter'] | null; // NestedIntNullableFilter
+    notIn?: Array<number | null> | null; // [Int]
+  }
+  NestedIntWithAggregatesFilter: { // input type
+    _avg?: NexusGenInputs['NestedFloatFilter'] | null; // NestedFloatFilter
+    _count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _max?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _min?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _sum?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    avg?: NexusGenInputs['NestedFloatFilter'] | null; // NestedFloatFilter
+    count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    equals?: number | null; // Int
+    gt?: number | null; // Int
+    gte?: number | null; // Int
+    in?: Array<number | null> | null; // [Int]
+    lt?: number | null; // Int
+    lte?: number | null; // Int
+    max?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    min?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    not?: NexusGenInputs['NestedIntWithAggregatesFilter'] | null; // NestedIntWithAggregatesFilter
+    notIn?: Array<number | null> | null; // [Int]
+    sum?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+  }
+  NestedStringFilter: { // input type
+    contains?: string | null; // String
+    endsWith?: string | null; // String
+    equals?: string | null; // String
+    gt?: string | null; // String
+    gte?: string | null; // String
+    in?: Array<string | null> | null; // [String]
+    lt?: string | null; // String
+    lte?: string | null; // String
+    not?: NexusGenInputs['NestedStringFilter'] | null; // NestedStringFilter
+    notIn?: Array<string | null> | null; // [String]
+    startsWith?: string | null; // String
+  }
+  NestedStringNullableFilter: { // input type
+    contains?: string | null; // String
+    endsWith?: string | null; // String
+    equals?: string | null; // String
+    gt?: string | null; // String
+    gte?: string | null; // String
+    in?: Array<string | null> | null; // [String]
+    lt?: string | null; // String
+    lte?: string | null; // String
+    not?: NexusGenInputs['NestedStringNullableFilter'] | null; // NestedStringNullableFilter
+    notIn?: Array<string | null> | null; // [String]
+    startsWith?: string | null; // String
+  }
+  NestedStringNullableWithAggregatesFilter: { // input type
+    _count?: NexusGenInputs['NestedIntNullableFilter'] | null; // NestedIntNullableFilter
+    _max?: NexusGenInputs['NestedStringNullableFilter'] | null; // NestedStringNullableFilter
+    _min?: NexusGenInputs['NestedStringNullableFilter'] | null; // NestedStringNullableFilter
+    contains?: string | null; // String
+    count?: NexusGenInputs['NestedIntNullableFilter'] | null; // NestedIntNullableFilter
+    endsWith?: string | null; // String
+    equals?: string | null; // String
+    gt?: string | null; // String
+    gte?: string | null; // String
+    in?: Array<string | null> | null; // [String]
+    lt?: string | null; // String
+    lte?: string | null; // String
+    max?: NexusGenInputs['NestedStringNullableFilter'] | null; // NestedStringNullableFilter
+    min?: NexusGenInputs['NestedStringNullableFilter'] | null; // NestedStringNullableFilter
+    not?: NexusGenInputs['NestedStringNullableWithAggregatesFilter'] | null; // NestedStringNullableWithAggregatesFilter
+    notIn?: Array<string | null> | null; // [String]
+    startsWith?: string | null; // String
+  }
+  NestedStringWithAggregatesFilter: { // input type
+    _count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _max?: NexusGenInputs['NestedStringFilter'] | null; // NestedStringFilter
+    _min?: NexusGenInputs['NestedStringFilter'] | null; // NestedStringFilter
+    contains?: string | null; // String
+    count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    endsWith?: string | null; // String
+    equals?: string | null; // String
+    gt?: string | null; // String
+    gte?: string | null; // String
+    in?: Array<string | null> | null; // [String]
+    lt?: string | null; // String
+    lte?: string | null; // String
+    max?: NexusGenInputs['NestedStringFilter'] | null; // NestedStringFilter
+    min?: NexusGenInputs['NestedStringFilter'] | null; // NestedStringFilter
+    not?: NexusGenInputs['NestedStringWithAggregatesFilter'] | null; // NestedStringWithAggregatesFilter
+    notIn?: Array<string | null> | null; // [String]
+    startsWith?: string | null; // String
+  }
+  NullableStringFieldUpdateOperationsInput: { // input type
+    set?: string | null; // String
+  }
+  StringFieldUpdateOperationsInput: { // input type
+    set?: string | null; // String
+  }
+  StringFilter: { // input type
+    contains?: string | null; // String
+    endsWith?: string | null; // String
+    equals?: string | null; // String
+    gt?: string | null; // String
+    gte?: string | null; // String
+    in?: Array<string | null> | null; // [String]
+    lt?: string | null; // String
+    lte?: string | null; // String
+    not?: NexusGenInputs['NestedStringFilter'] | null; // NestedStringFilter
+    notIn?: Array<string | null> | null; // [String]
+    startsWith?: string | null; // String
+  }
+  StringNullableFilter: { // input type
+    contains?: string | null; // String
+    endsWith?: string | null; // String
+    equals?: string | null; // String
+    gt?: string | null; // String
+    gte?: string | null; // String
+    in?: Array<string | null> | null; // [String]
+    lt?: string | null; // String
+    lte?: string | null; // String
+    not?: NexusGenInputs['NestedStringNullableFilter'] | null; // NestedStringNullableFilter
+    notIn?: Array<string | null> | null; // [String]
+    startsWith?: string | null; // String
+  }
+  StringNullableWithAggregatesFilter: { // input type
+    _count?: NexusGenInputs['NestedIntNullableFilter'] | null; // NestedIntNullableFilter
+    _max?: NexusGenInputs['NestedStringNullableFilter'] | null; // NestedStringNullableFilter
+    _min?: NexusGenInputs['NestedStringNullableFilter'] | null; // NestedStringNullableFilter
+    contains?: string | null; // String
+    count?: NexusGenInputs['NestedIntNullableFilter'] | null; // NestedIntNullableFilter
+    endsWith?: string | null; // String
+    equals?: string | null; // String
+    gt?: string | null; // String
+    gte?: string | null; // String
+    in?: Array<string | null> | null; // [String]
+    lt?: string | null; // String
+    lte?: string | null; // String
+    max?: NexusGenInputs['NestedStringNullableFilter'] | null; // NestedStringNullableFilter
+    min?: NexusGenInputs['NestedStringNullableFilter'] | null; // NestedStringNullableFilter
+    not?: NexusGenInputs['NestedStringNullableWithAggregatesFilter'] | null; // NestedStringNullableWithAggregatesFilter
+    notIn?: Array<string | null> | null; // [String]
+    startsWith?: string | null; // String
+  }
+  StringWithAggregatesFilter: { // input type
+    _count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _max?: NexusGenInputs['NestedStringFilter'] | null; // NestedStringFilter
+    _min?: NexusGenInputs['NestedStringFilter'] | null; // NestedStringFilter
+    contains?: string | null; // String
+    count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    endsWith?: string | null; // String
+    equals?: string | null; // String
+    gt?: string | null; // String
+    gte?: string | null; // String
+    in?: Array<string | null> | null; // [String]
+    lt?: string | null; // String
+    lte?: string | null; // String
+    max?: NexusGenInputs['NestedStringFilter'] | null; // NestedStringFilter
+    min?: NexusGenInputs['NestedStringFilter'] | null; // NestedStringFilter
+    not?: NexusGenInputs['NestedStringWithAggregatesFilter'] | null; // NestedStringWithAggregatesFilter
+    notIn?: Array<string | null> | null; // [String]
+    startsWith?: string | null; // String
+  }
   TodoItemCreateInput: { // input type
-    done: boolean; // Boolean!
+    done?: boolean | null; // Boolean
     text: string; // String!
+    title?: string | null; // String
+  }
+  TodoItemOrderByInput: { // input type
+    done?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    text?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    title?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  TodoItemScalarWhereWithAggregatesInput: { // input type
+    AND?: Array<NexusGenInputs['TodoItemScalarWhereWithAggregatesInput'] | null> | null; // [TodoItemScalarWhereWithAggregatesInput]
+    NOT?: Array<NexusGenInputs['TodoItemScalarWhereWithAggregatesInput'] | null> | null; // [TodoItemScalarWhereWithAggregatesInput]
+    OR?: Array<NexusGenInputs['TodoItemScalarWhereWithAggregatesInput'] | null> | null; // [TodoItemScalarWhereWithAggregatesInput]
+    done?: NexusGenInputs['BoolWithAggregatesFilter'] | null; // BoolWithAggregatesFilter
+    id?: NexusGenInputs['IntWithAggregatesFilter'] | null; // IntWithAggregatesFilter
+    text?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
+    title?: NexusGenInputs['StringNullableWithAggregatesFilter'] | null; // StringNullableWithAggregatesFilter
+  }
+  TodoItemUncheckedCreateInput: { // input type
+    done?: boolean | null; // Boolean
+    id?: number | null; // Int
+    text: string; // String!
+    title?: string | null; // String
+  }
+  TodoItemUncheckedUpdateInput: { // input type
+    done?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
+    id?: NexusGenInputs['IntFieldUpdateOperationsInput'] | null; // IntFieldUpdateOperationsInput
+    text?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    title?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+  }
+  TodoItemUncheckedUpdateManyInput: { // input type
+    done?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
+    id?: NexusGenInputs['IntFieldUpdateOperationsInput'] | null; // IntFieldUpdateOperationsInput
+    text?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    title?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+  }
+  TodoItemUpdateInput: { // input type
+    done?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
+    text?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    title?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+  }
+  TodoItemUpdateManyMutationInput: { // input type
+    done?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
+    text?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    title?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+  }
+  TodoItemWhereInput: { // input type
+    AND?: Array<NexusGenInputs['TodoItemWhereInput'] | null> | null; // [TodoItemWhereInput]
+    NOT?: Array<NexusGenInputs['TodoItemWhereInput'] | null> | null; // [TodoItemWhereInput]
+    OR?: Array<NexusGenInputs['TodoItemWhereInput'] | null> | null; // [TodoItemWhereInput]
+    done?: NexusGenInputs['BoolFilter'] | null; // BoolFilter
+    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
+    text?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    title?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
   }
   TodoItemWhereUniqueInput: { // input type
     id?: number | null; // Int
@@ -29,6 +368,8 @@ export interface NexusGenInputs {
 }
 
 export interface NexusGenEnums {
+  SortOrder: "asc" | "desc"
+  TodoItemScalarFieldEnum: "done" | "id" | "text" | "title"
 }
 
 export interface NexusGenScalars {
@@ -37,15 +378,60 @@ export interface NexusGenScalars {
   Float: number
   Boolean: boolean
   ID: string
+  BigInt: any
+  DateTime: any
+  Decimal: any
+  Json: any
 }
 
 export interface NexusGenObjects {
+  AggregateTodoItem: { // root type
+    _avg?: NexusGenRootTypes['TodoItemAvgAggregateOutputType'] | null; // TodoItemAvgAggregateOutputType
+    _count?: NexusGenRootTypes['TodoItemCountAggregateOutputType'] | null; // TodoItemCountAggregateOutputType
+    _max?: NexusGenRootTypes['TodoItemMaxAggregateOutputType'] | null; // TodoItemMaxAggregateOutputType
+    _min?: NexusGenRootTypes['TodoItemMinAggregateOutputType'] | null; // TodoItemMinAggregateOutputType
+    _sum?: NexusGenRootTypes['TodoItemSumAggregateOutputType'] | null; // TodoItemSumAggregateOutputType
+    avg?: NexusGenRootTypes['TodoItemAvgAggregateOutputType'] | null; // TodoItemAvgAggregateOutputType
+    count?: NexusGenRootTypes['TodoItemCountAggregateOutputType'] | null; // TodoItemCountAggregateOutputType
+    max?: NexusGenRootTypes['TodoItemMaxAggregateOutputType'] | null; // TodoItemMaxAggregateOutputType
+    min?: NexusGenRootTypes['TodoItemMinAggregateOutputType'] | null; // TodoItemMinAggregateOutputType
+    sum?: NexusGenRootTypes['TodoItemSumAggregateOutputType'] | null; // TodoItemSumAggregateOutputType
+  }
+  BatchPayload: { // root type
+    count: number; // Int!
+  }
   Mutation: {};
   Query: {};
   TodoItem: { // root type
     done: boolean; // Boolean!
     id: number; // Int!
     text: string; // String!
+    title?: string | null; // String
+  }
+  TodoItemAvgAggregateOutputType: { // root type
+    id?: number | null; // Float
+  }
+  TodoItemCountAggregateOutputType: { // root type
+    _all: number; // Int!
+    done: number; // Int!
+    id: number; // Int!
+    text: number; // Int!
+    title: number; // Int!
+  }
+  TodoItemMaxAggregateOutputType: { // root type
+    done?: boolean | null; // Boolean
+    id?: number | null; // Int
+    text?: string | null; // String
+    title?: string | null; // String
+  }
+  TodoItemMinAggregateOutputType: { // root type
+    done?: boolean | null; // Boolean
+    id?: number | null; // Int
+    text?: string | null; // String
+    title?: string | null; // String
+  }
+  TodoItemSumAggregateOutputType: { // root type
+    id?: number | null; // Int
   }
 }
 
@@ -57,33 +443,133 @@ export interface NexusGenUnions {
 
 export type NexusGenRootTypes = NexusGenObjects
 
-export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
+export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars & NexusGenEnums
 
 export interface NexusGenFieldTypes {
+  AggregateTodoItem: { // field return type
+    _avg: NexusGenRootTypes['TodoItemAvgAggregateOutputType'] | null; // TodoItemAvgAggregateOutputType
+    _count: NexusGenRootTypes['TodoItemCountAggregateOutputType'] | null; // TodoItemCountAggregateOutputType
+    _max: NexusGenRootTypes['TodoItemMaxAggregateOutputType'] | null; // TodoItemMaxAggregateOutputType
+    _min: NexusGenRootTypes['TodoItemMinAggregateOutputType'] | null; // TodoItemMinAggregateOutputType
+    _sum: NexusGenRootTypes['TodoItemSumAggregateOutputType'] | null; // TodoItemSumAggregateOutputType
+    avg: NexusGenRootTypes['TodoItemAvgAggregateOutputType'] | null; // TodoItemAvgAggregateOutputType
+    count: NexusGenRootTypes['TodoItemCountAggregateOutputType'] | null; // TodoItemCountAggregateOutputType
+    max: NexusGenRootTypes['TodoItemMaxAggregateOutputType'] | null; // TodoItemMaxAggregateOutputType
+    min: NexusGenRootTypes['TodoItemMinAggregateOutputType'] | null; // TodoItemMinAggregateOutputType
+    sum: NexusGenRootTypes['TodoItemSumAggregateOutputType'] | null; // TodoItemSumAggregateOutputType
+  }
+  BatchPayload: { // field return type
+    count: number; // Int!
+  }
   Mutation: { // field return type
     createOneTodoItem: NexusGenRootTypes['TodoItem']; // TodoItem!
+    deleteManyTodoItem: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    deleteOneTodoItem: NexusGenRootTypes['TodoItem'] | null; // TodoItem
+    updateManyTodoItem: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateOneTodoItem: NexusGenRootTypes['TodoItem']; // TodoItem!
+    upsertOneTodoItem: NexusGenRootTypes['TodoItem']; // TodoItem!
   }
   Query: { // field return type
-    todoItems: NexusGenRootTypes['TodoItem'][]; // [TodoItem!]!
+    aggregateTodoItem: NexusGenRootTypes['AggregateTodoItem'] | null; // AggregateTodoItem
+    findFirstTodoItem: NexusGenRootTypes['TodoItem'] | null; // TodoItem
+    findManyTodoItem: NexusGenRootTypes['TodoItem'][]; // [TodoItem!]!
+    findManyTodoItemCount: number; // Int!
+    findUniqueTodoItem: NexusGenRootTypes['TodoItem'] | null; // TodoItem
   }
   TodoItem: { // field return type
     done: boolean; // Boolean!
     id: number; // Int!
     text: string; // String!
+    title: string | null; // String
+  }
+  TodoItemAvgAggregateOutputType: { // field return type
+    id: number | null; // Float
+  }
+  TodoItemCountAggregateOutputType: { // field return type
+    _all: number; // Int!
+    done: number; // Int!
+    id: number; // Int!
+    text: number; // Int!
+    title: number; // Int!
+  }
+  TodoItemMaxAggregateOutputType: { // field return type
+    done: boolean | null; // Boolean
+    id: number | null; // Int
+    text: string | null; // String
+    title: string | null; // String
+  }
+  TodoItemMinAggregateOutputType: { // field return type
+    done: boolean | null; // Boolean
+    id: number | null; // Int
+    text: string | null; // String
+    title: string | null; // String
+  }
+  TodoItemSumAggregateOutputType: { // field return type
+    id: number | null; // Int
   }
 }
 
 export interface NexusGenFieldTypeNames {
+  AggregateTodoItem: { // field return type name
+    _avg: 'TodoItemAvgAggregateOutputType'
+    _count: 'TodoItemCountAggregateOutputType'
+    _max: 'TodoItemMaxAggregateOutputType'
+    _min: 'TodoItemMinAggregateOutputType'
+    _sum: 'TodoItemSumAggregateOutputType'
+    avg: 'TodoItemAvgAggregateOutputType'
+    count: 'TodoItemCountAggregateOutputType'
+    max: 'TodoItemMaxAggregateOutputType'
+    min: 'TodoItemMinAggregateOutputType'
+    sum: 'TodoItemSumAggregateOutputType'
+  }
+  BatchPayload: { // field return type name
+    count: 'Int'
+  }
   Mutation: { // field return type name
     createOneTodoItem: 'TodoItem'
+    deleteManyTodoItem: 'BatchPayload'
+    deleteOneTodoItem: 'TodoItem'
+    updateManyTodoItem: 'BatchPayload'
+    updateOneTodoItem: 'TodoItem'
+    upsertOneTodoItem: 'TodoItem'
   }
   Query: { // field return type name
-    todoItems: 'TodoItem'
+    aggregateTodoItem: 'AggregateTodoItem'
+    findFirstTodoItem: 'TodoItem'
+    findManyTodoItem: 'TodoItem'
+    findManyTodoItemCount: 'Int'
+    findUniqueTodoItem: 'TodoItem'
   }
   TodoItem: { // field return type name
     done: 'Boolean'
     id: 'Int'
     text: 'String'
+    title: 'String'
+  }
+  TodoItemAvgAggregateOutputType: { // field return type name
+    id: 'Float'
+  }
+  TodoItemCountAggregateOutputType: { // field return type name
+    _all: 'Int'
+    done: 'Int'
+    id: 'Int'
+    text: 'Int'
+    title: 'Int'
+  }
+  TodoItemMaxAggregateOutputType: { // field return type name
+    done: 'Boolean'
+    id: 'Int'
+    text: 'String'
+    title: 'String'
+  }
+  TodoItemMinAggregateOutputType: { // field return type name
+    done: 'Boolean'
+    id: 'Int'
+    text: 'String'
+    title: 'String'
+  }
+  TodoItemSumAggregateOutputType: { // field return type name
+    id: 'Int'
   }
 }
 
@@ -92,13 +578,61 @@ export interface NexusGenArgTypes {
     createOneTodoItem: { // args
       data: NexusGenInputs['TodoItemCreateInput']; // TodoItemCreateInput!
     }
+    deleteManyTodoItem: { // args
+      where?: NexusGenInputs['TodoItemWhereInput'] | null; // TodoItemWhereInput
+    }
+    deleteOneTodoItem: { // args
+      where: NexusGenInputs['TodoItemWhereUniqueInput']; // TodoItemWhereUniqueInput!
+    }
+    updateManyTodoItem: { // args
+      data: NexusGenInputs['TodoItemUpdateManyMutationInput']; // TodoItemUpdateManyMutationInput!
+      where?: NexusGenInputs['TodoItemWhereInput'] | null; // TodoItemWhereInput
+    }
+    updateOneTodoItem: { // args
+      data: NexusGenInputs['TodoItemUpdateInput']; // TodoItemUpdateInput!
+      where: NexusGenInputs['TodoItemWhereUniqueInput']; // TodoItemWhereUniqueInput!
+    }
+    upsertOneTodoItem: { // args
+      create: NexusGenInputs['TodoItemCreateInput']; // TodoItemCreateInput!
+      update: NexusGenInputs['TodoItemUpdateInput']; // TodoItemUpdateInput!
+      where: NexusGenInputs['TodoItemWhereUniqueInput']; // TodoItemWhereUniqueInput!
+    }
   }
   Query: {
-    todoItems: { // args
-      after?: NexusGenInputs['TodoItemWhereUniqueInput'] | null; // TodoItemWhereUniqueInput
-      before?: NexusGenInputs['TodoItemWhereUniqueInput'] | null; // TodoItemWhereUniqueInput
-      first?: number | null; // Int
-      last?: number | null; // Int
+    aggregateTodoItem: { // args
+      cursor?: NexusGenInputs['TodoItemWhereUniqueInput'] | null; // TodoItemWhereUniqueInput
+      distinct?: NexusGenEnums['TodoItemScalarFieldEnum'] | null; // TodoItemScalarFieldEnum
+      orderBy?: Array<NexusGenInputs['TodoItemOrderByInput'] | null> | null; // [TodoItemOrderByInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['TodoItemWhereInput'] | null; // TodoItemWhereInput
+    }
+    findFirstTodoItem: { // args
+      cursor?: NexusGenInputs['TodoItemWhereUniqueInput'] | null; // TodoItemWhereUniqueInput
+      distinct?: NexusGenEnums['TodoItemScalarFieldEnum'] | null; // TodoItemScalarFieldEnum
+      orderBy?: Array<NexusGenInputs['TodoItemOrderByInput'] | null> | null; // [TodoItemOrderByInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['TodoItemWhereInput'] | null; // TodoItemWhereInput
+    }
+    findManyTodoItem: { // args
+      cursor?: NexusGenInputs['TodoItemWhereUniqueInput'] | null; // TodoItemWhereUniqueInput
+      distinct?: NexusGenEnums['TodoItemScalarFieldEnum'] | null; // TodoItemScalarFieldEnum
+      orderBy?: Array<NexusGenInputs['TodoItemOrderByInput'] | null> | null; // [TodoItemOrderByInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['TodoItemWhereInput'] | null; // TodoItemWhereInput
+    }
+    findManyTodoItemCount: { // args
+      cursor?: NexusGenInputs['TodoItemWhereUniqueInput'] | null; // TodoItemWhereUniqueInput
+      distinct?: NexusGenEnums['TodoItemScalarFieldEnum'] | null; // TodoItemScalarFieldEnum
+      orderBy?: Array<NexusGenInputs['TodoItemOrderByInput'] | null> | null; // [TodoItemOrderByInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['TodoItemWhereInput'] | null; // TodoItemWhereInput
+    }
+    findUniqueTodoItem: { // args
+      where: NexusGenInputs['TodoItemWhereUniqueInput']; // TodoItemWhereUniqueInput!
     }
   }
 }
@@ -113,7 +647,7 @@ export type NexusGenObjectNames = keyof NexusGenObjects;
 
 export type NexusGenInputNames = keyof NexusGenInputs;
 
-export type NexusGenEnumNames = never;
+export type NexusGenEnumNames = keyof NexusGenEnums;
 
 export type NexusGenInterfaceNames = never;
 

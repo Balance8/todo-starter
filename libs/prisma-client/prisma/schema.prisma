@@ -7,12 +7,14 @@ datasource db {
 }
 
 generator client {
-  provider = "prisma-client-js"
-  output   = "../src"
+  provider        = "prisma-client-js"
+  output          = "../src"
+  previewFeatures = ["selectRelationCount", "referentialActions"]
 }
 
 model TodoItem {
-  id   Int     @id @default(autoincrement())
-  text String
-  done Boolean
+  id    Int     @id @default(autoincrement())
+  text  String
+  done  Boolean @default(false)
+  title String?
 }
